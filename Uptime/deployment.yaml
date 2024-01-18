@@ -1,5 +1,7 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Namespace
+metadate: uptime-kuma
+---
 metadata:
   name: uptime-kuma
   namespace: uptime-kuma
