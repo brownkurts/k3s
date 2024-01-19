@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: uptime-kuma
+kind: Deployment
 metadata:
   name: uptime-kuma
 spec:
@@ -25,13 +25,14 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "100m"
-          limits:
+            
+          limits: 
             memory: "512Mi"
             cpu: "250m" 
         env:
         - name: UPTIME_KUMA_PORT
           value: "3001"
-        ports:
+        ports: 
           - containerPort: 3001
         volumeMounts:
         - mountPath: /app/data
@@ -39,4 +40,5 @@ spec:
       volumes:
       - name: uptime-kuma-content
         persistentVolumeClaim:
-          claimName: uptime-kuma-claim
+          claimName:  uptime-kuma-claim
+        
