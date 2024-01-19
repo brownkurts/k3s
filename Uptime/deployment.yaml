@@ -1,10 +1,7 @@
 apiVersion: apps/v1
-kind: Namespace
-metadate: uptime-kuma
----
+kind: Deployment
 metadata:
   name: uptime-kuma
-  namespace: uptime-kuma
 spec:
   selector:
     matchLabels:
