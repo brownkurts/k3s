@@ -11,7 +11,9 @@ spec:
     - match: Host(`kasm.kbtech.org`)
       kind: Rule
       services:
-        - name: 192.168.200.25
-          port: 443
+        loadBalancer:
+          servers:
+            - url: "https://192.168.200.25:443"
+          passHostHeader: true
   tls:
     secretName: kbtech-tls # change to your cert name
