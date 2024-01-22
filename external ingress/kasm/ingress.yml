@@ -14,5 +14,8 @@ spec:
         - name: loadBalancer
           port: 443
           passHostHeader: true
+          servers:
+            - url: "https://192.168.200.25:443"
   tls:
     secretName: kbtech-tls # change to your cert name
+
