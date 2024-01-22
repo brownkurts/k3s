@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kasm
+  namespace: ckasm
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`kasm.kbtech.org`)
+      kind: Rule
+      services:
+        - name: 192.168.200.25
+          port: 443
+  tls:
+    secretName: kbtech-tls # change to your cert name
