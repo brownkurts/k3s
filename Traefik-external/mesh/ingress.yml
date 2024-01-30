@@ -12,7 +12,7 @@ spec:
   type: ExternalName
   ports:
     - name: http # change me
-      port: 443 # change me
+      port: 444 # change me
       targetPort: 443 # change me
   externalName: 192.168.200.20 # change me
 ---
