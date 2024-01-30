@@ -54,7 +54,7 @@ spec:
     forceSTSHeader: true
     stsIncludeSubdomains: true
     stsPreload: true
-    stsSeconds: 315360000
+    stsSeconds: 15552000
     customFrameOptionsValue: SAMEORIGIN
     customRequestHeaders:
       X-Forwarded-Proto: https
