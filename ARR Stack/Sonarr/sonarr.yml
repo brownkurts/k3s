@@ -7,7 +7,8 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: arr-stack
+  name: sonarr
+  namespace: arr-stack
 spec:
   selector:
     matchLabels:
