@@ -2,7 +2,6 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: sonarr-claim
-  namespace: arr-stack
 spec:
   storageClassName: longhorn
   accessModes:
