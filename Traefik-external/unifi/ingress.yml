@@ -11,7 +11,7 @@ metadata:
 spec:
   type: ExternalName
   ports:
-    - name: http # change me
+    - name: https # change me
       port: 8443 # change me
       targetPort: 8443 # change me
   externalName: 192.168.2.15 # change me
