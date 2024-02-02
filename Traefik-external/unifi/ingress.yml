@@ -12,8 +12,8 @@ spec:
   type: ExternalName
   ports:
     - name: http # change me
-      port: 443 # change me
-      targetPort: 443 # change me
+      port: 8443 # change me
+      targetPort: 8443 # change me
   externalName: 192.168.2.15 # change me
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -31,12 +31,12 @@ spec:
       kind: Rule
       services:
         - name: unifi # change me
-          port: 443 # change me
+          port: 8443 # change me
     - match: Host(`unifi.kbtech.org`) # change me
       kind: Rule
       services:
         - name: unifi # change me
-          port: 443 # change me
+          port: 8443 # change me
       middlewares:
         - name: default-headers
   tls:
