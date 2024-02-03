@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   annotations:
     pv.kubernetes.io/provisioned-by: smb.csi.k8s.io
-  name: pv-sonarr-smb
+  name: sonarr-smb
 spec:
   capacity:
     storage: 25000Gi
@@ -37,5 +37,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: pv-sonarr-smb
+  volumeName: sonarr-smb
   storageClassName: smb
