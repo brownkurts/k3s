@@ -4,6 +4,7 @@ metadata:
   annotations:
     pv.kubernetes.io/provisioned-by: smb.csi.k8s.io
   name: pv-sonarr-smb
+spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
