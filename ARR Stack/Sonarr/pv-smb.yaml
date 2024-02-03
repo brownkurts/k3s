@@ -36,6 +36,6 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi
+      storage: 25000Gi
   volumeName: sonarr-smb
   storageClassName: smb
