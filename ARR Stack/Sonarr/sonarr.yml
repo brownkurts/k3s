@@ -44,7 +44,7 @@ spec:
         volumeMounts:
         - mountPath: /app/data
           name: sonarr-data
-        - mountPath: /app/smb
+        - mountPath: /media
           name: smb
       volumes:
       - name: sonarr-data
