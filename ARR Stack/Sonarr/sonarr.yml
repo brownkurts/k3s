@@ -55,7 +55,7 @@ spec:
       - name: smb
         persistentVolumeClaim:
           claimName: sonarr-smb
-      -name: downloadsonarr
+      - name: downloadsonarr
        persistentVolumeClaim:
           claimName: downloadsonarr-smb
 
