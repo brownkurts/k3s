@@ -46,7 +46,7 @@ spec:
           name: sonarr-data
         - mountPath: /media
           name: smb
-        - mountPath: /download
+        - mountPath: /data
           name: downloadsonarr
       volumes:
       - name: sonarr-data
