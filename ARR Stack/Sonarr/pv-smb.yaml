@@ -29,7 +29,7 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: pvc-sonarr-smb
+  name: sonarr-smb
   namespace: arr-stack
 spec:
   accessModes:
