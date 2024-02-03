@@ -25,3 +25,17 @@ spec:
     nodeStageSecretRef:
       name: smbcreds
       namespace: default
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-sonarr-smb
+  namespace: arr-stack
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  volumeName: pv-sonarr-smb
+  storageClassName: smb
