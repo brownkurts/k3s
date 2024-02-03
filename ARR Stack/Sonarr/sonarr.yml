@@ -45,7 +45,7 @@ spec:
         - mountPath: /app/data
           name: sonarr-data
         - mountPath: /app/smb
-          name: pv-sonarr-smb
+          name: smb
       volumes:
       - name: sonarr-data
         persistentVolumeClaim:
