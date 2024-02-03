@@ -21,7 +21,7 @@ spec:
     # make sure this value is unique for every share in the cluster
     volumeHandle: sonarr
     volumeAttributes:
-      source: "//192.168.2.21/Media/TV Shows/" # Change this to your SMB IP and share name
+      source: "//192.168.2.21/Media/TV Shows" # Change this to your SMB IP and share name
     nodeStageSecretRef:
       name: smbcreds
       namespace: default
