@@ -7,12 +7,12 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prowlarr
+  name: sonarr
   namespace: arr-stack
 spec:
   selector:
     matchLabels:
-      app: prowlarr
+      app: sonarr
   replicas: 1
   progressDeadlineSeconds: 600
   revisionHistoryLimit: 2
@@ -21,31 +21,34 @@ spec:
   template:
     metadata:
       labels:
-        app: prowlarr
+        app: sonarr
     spec:
       nodeSelector:
         worker: "true"
       containers:
-      - name: prowlarr
-        image: lscr.io/linuxserver/prowlarr:latest
+      - name: sonarr
+        image: lscr.io/linuxserver/sonarr:latest
         resources:
           requests:
             memory: "256Mi"
             cpu: "100m"
-            
           limits: 
             memory: "512Mi"
             cpu: "250m" 
         env:
-        - name: prowlarr_Port
-          value: "9696"
+        - name: Sonarr_Port
+          value: "8989"
         ports: 
-          - containerPort: 9696
+          - containerPort: 8989
         volumeMounts:
         - mountPath: /config
-          name: prowlarr-data
+          name: data
+        - mountPath: /media
+          name: smb
       volumes:
-      - name: prowlarr-data
+      - name: data
         persistentVolumeClaim:
-          claimName:  prowlarr-claim
-        
+          claimName: sonarr-claim
+      - name: smb
+        persistentVolumeClaim:
+          claimName: sonarr-smb
