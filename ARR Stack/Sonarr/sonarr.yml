@@ -42,7 +42,7 @@ spec:
         ports: 
           - containerPort: 8989
         volumeMounts:
-        - mountPath: /app/data
+        - mountPath: /config
           name: sonarr-data
         - mountPath: /media
           name: smb
