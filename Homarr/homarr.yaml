@@ -31,8 +31,13 @@ spec:
         imagePullPolicy: Always
         name: homarr-server
         volumeMounts:
-        - mountPath: /config
+        - mountPath: /app/pulic/icons
           name: homarr-content
+        - mountPath: /app/data/configs
+          name: homarr-content
+        - mountPath: /data
+          name: homarr-content
+
       volumes:
       - name: homarr-content
         persistentVolumeClaim:
