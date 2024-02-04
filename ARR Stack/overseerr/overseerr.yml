@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arr-stack
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: overseerr
+  namespace: arr-stack
+spec:
+  selector:
+    matchLabels:
+      app: overseerr
+  replicas: 1
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: overseerr
+    spec:
+      nodeSelector:
+        worker: "true"
+      containers:
+      - name: overseerr
+        image: lscr.io/linuxserver/overseerr:latest
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+            
+          limits: 
+            memory: "512Mi"
+            cpu: "250m" 
+        env:
+        - name: overseerr_Port
+          value: "5055"
+        ports: 
+          - containerPort: 5055
+        volumeMounts:
+        - mountPath: /config
+          name: overseerr-data
+      volumes:
+      - name: overseerr-data
+        persistentVolumeClaim:
+          claimName:  overseerr-claim
+        

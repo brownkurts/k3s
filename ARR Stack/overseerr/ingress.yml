@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: overseerr-ingress
+  namespace: arr-stack
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`request.kbtech.org`)
+      kind: Rule
+      services:
+        - name: overseerr
+          port: 5055
