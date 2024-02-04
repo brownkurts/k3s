@@ -31,7 +31,7 @@ spec:
         imagePullPolicy: Always
         name: homarr-server
         volumeMounts:
-        - mountPath: /app/data
+        - mountPath: /config
           name: homarr-content
       volumes:
       - name: homarr-content
