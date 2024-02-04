@@ -37,3 +37,4 @@ spec:
       - name: homarr-content
         persistentVolumeClaim:
           claimName: homarr-claim
+
