@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homarr-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homarr-server
+  name: homarr-server
+  namespace: homarr-server
+spec:
+  selector:
+    matchLabels:
+      app: homarr-server
+  replicas: 1
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: homarr-server
+    spec:
+      nodeSelector:
+        worker: "true"
+      containers:
+      - image: ghcr.io/ajnart/homarr:latest
+        imagePullPolicy: Always
+        name: homarr-server
+        volumeMounts:
+        - mountPath: /app/data
+          name: homarr-content
+      volumes:
+      - name: homarr-content
+        persistentVolumeClaim:
+          claimName: homarr-claim
