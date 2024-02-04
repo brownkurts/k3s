@@ -32,7 +32,6 @@ spec:
           requests:
             memory: "256Mi"
             cpu: "100m"
-            
           limits: 
             memory: "512Mi"
             cpu: "250m" 
@@ -49,8 +48,7 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName:  sonarr-claim
+          claimName: sonarr-claim
       - name: smb
         persistentVolumeClaim:
           claimName: sonarr-smb
-        
