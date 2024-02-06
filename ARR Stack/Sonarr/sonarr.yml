@@ -45,6 +45,8 @@ spec:
           name: data
         - mountPath: /media
           name: smb
+        - mountPath: /data
+          name: smbdownload
       volumes:
       - name: data
         persistentVolumeClaim:
@@ -52,3 +54,6 @@ spec:
       - name: smb
         persistentVolumeClaim:
           claimName: sonarr-smb
+      - name: smbdownload
+        persistentVolumeClaim:
+          claimName: sonarrdownload-smb
