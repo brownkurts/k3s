@@ -44,11 +44,11 @@ spec:
         - mountPath: /config
           name: config
         - mountPath: /data
-          name: smb
+          name: data
       volumes:
-      - name: data
+      - name: config
         persistentVolumeClaim:
           claimName: sabnzbd-claim
-      - name: smb
+      - name: data
         persistentVolumeClaim:
           claimName: sabnzbd-smb
