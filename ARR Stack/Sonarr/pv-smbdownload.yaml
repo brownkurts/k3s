@@ -19,7 +19,7 @@ spec:
     readOnly: false
     # volumeHandle format: {smb-server-address}#{sub-dir-name}#{share-name}
     # make sure this value is unique for every share in the cluster
-    volumeHandle: sonarr
+    volumeHandle: sonarrdownload
     volumeAttributes:
       source: "//192.168.2.21/Downloads" # Change this to your SMB IP and share name
     nodeStageSecretRef:
