@@ -27,7 +27,7 @@ spec:
         worker: "true"
       containers:
       - name: sabnzbd
-        image: lscr.io/linuxserver/sabnzbd:latest
+        image: binhex/arch-sabnzbd:latest
         resources:
           requests:
             memory: "256Mi"
