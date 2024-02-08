@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sabnzbd # change me
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sabnzbd # change me
+  namespace: sabnzbd # change me
+spec:
+  type: ExternalName
+  ports:
+    - name: http # change me
+      port: 8081 # change me
+      targetPort: 8081 # change me
+  externalName: 192.168.2.21 # change me
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sabnzbd # change me
+  namespace: sabnzbd # change me
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`www.sabnzbd.kbtech.org`) # change me
+      kind: Rule
+      services:
+        - name: sabnzbd # change me
+          port: 8081 # change me
+    - match: Host(`sabnzbd.kbtech.org`) # change me
+      kind: Rule
+      services:
+        - name: sabnzbd # change me
+          port: 8081 # change me
+      middlewares:
+        - name: default-headers
+  tls:
+    secretName: kbtech-tls # change me
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: default-headers
+  namespace: sabnzbd # change me
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
