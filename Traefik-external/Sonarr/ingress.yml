@@ -14,7 +14,7 @@ spec:
     - name: https # change me
       port: 8989 # change me
       targetPort: 8989 # change me
-  externalName: 192.168.200.200 # change me
+  externalName: 192.168.2.21 # change me
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
