@@ -27,15 +27,7 @@ spec:
         worker: "true"
       containers:
       - name: overseerr
-        image: lscr.io/linuxserver/overseerr:latest
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "100m"
-            
-          limits: 
-            memory: "512Mi"
-            cpu: "250m" 
+        image: lscr.io/linuxserver/overseerr:latest 
         env:
         - name: overseerr_Port
           value: "5055"
