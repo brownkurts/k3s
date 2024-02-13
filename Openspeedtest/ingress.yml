@@ -1,8 +1,8 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: openspeedtest-server
-  namespace: openspeedtest-server
+  name: openspeedtest
+  namespace: openspeedtest
   annotations: 
     kubernetes.io/ingress.class: traefik-external
 spec:
@@ -12,7 +12,7 @@ spec:
     - match: Host(`speedtest.kbtech.org`)
       kind: Rule
       services:
-        - name: openspeedtest-server
+        - name: openspeedtest
           port: 3000
   tls:
     secretName: kbtech-tls # change to your cert name
