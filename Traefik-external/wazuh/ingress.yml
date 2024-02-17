@@ -1,41 +1,41 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: wazuh # change me
+  name: kasm # change me
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: wazuh # change me
-  namespace: wazuh # change me
+  name: kasm # change me
+  namespace: kasm # change me
 spec:
   type: ExternalName
   ports:
     - name: https # change me
       port: 443 # change me
       targetPort: 443 # change me
-  externalName: 192.168.200.32 # change me
+  externalName: 192.168.200.25 # change me
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: wazuh # change me
-  namespace: wazuh # change me
+  name: kasm # change me
+  namespace: kasm # change me
   annotations: 
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`www.wazuh.kbtech.org`) # change me
+    - match: Host(`www.kasm.kbtech.org`) # change me
       kind: Rule
       services:
-        - name: wazuh # change me
+        - name: kasm # change me
           port: 443 # change me
-    - match: Host(`wazuh.kbtech.org`) # change me
+    - match: Host(`kasm.kbtech.org`) # change me
       kind: Rule
       services:
-        - name: wazuh # change me
+        - name: kasm # change me
           port: 443 # change me
       middlewares:
         - name: default-headers
@@ -46,7 +46,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: default-headers
-  namespace: wazuh # change me
+  namespace: kasm # change me
 spec:
   headers:
     browserXssFilter: true
