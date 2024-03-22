@@ -13,6 +13,6 @@ spec:
       kind: Rule
       services:
         - name: remotely
-          port: 7575
+          port: 5000
   tls:
     secretName: kbtech-tls # change to your cert name
