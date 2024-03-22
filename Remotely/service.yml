@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: remotely
+  namespace: remotely
+spec:
+  selector:
+    app: remotely
+  ports:
+    - protocol: TCP
+      port: 7575
+      targetPort: 7575
