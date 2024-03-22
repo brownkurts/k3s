@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`remotely.kbtech.org`)
       kind: Rule

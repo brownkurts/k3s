@@ -9,5 +9,5 @@ spec:
     app: remotely
   ports:
     - protocol: TCP
-      port: 5500
+      port: 5000
       targetPort: 5000

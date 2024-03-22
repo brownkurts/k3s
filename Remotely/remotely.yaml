@@ -33,8 +33,6 @@ spec:
         volumeMounts:
         - mountPath: /app/AppData
           name: remotely-content
-
-
       volumes:
       - name: remotely-content
         persistentVolumeClaim:
