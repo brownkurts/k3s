@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: proxmox-dev # change me
+  name: proxmoxdev # change me
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: proxmox-dev # change me
-  namespace: proxmox-dev # change me
+  name: proxmoxdev # change me
+  namespace: proxmoxdev # change me
 spec:
   type: ExternalName
   ports:
@@ -19,23 +19,23 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: proxmox-dev # change me
-  namespace: proxmox-dev # change me
+  name: proxmoxdev # change me
+  namespace: proxmoxdev # change me
   annotations: 
     kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`www.proxmox-dev.kbtech.org`) # change me
+    - match: Host(`www.proxmoxdev.kbtech.org`) # change me
       kind: Rule
       services:
-        - name: proxmox-dev # change me
+        - name: proxmoxdev # change me
           port: 8006 # change me
-    - match: Host(`proxmox-dev.kbtech.org`) # change me
+    - match: Host(`proxmoxdev.kbtech.org`) # change me
       kind: Rule
       services:
-        - name: proxmox-dev # change me
+        - name: proxmoxdev # change me
           port: 8006 # change me
       middlewares:
         - name: default-headers
@@ -46,7 +46,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: default-headers
-  namespace: proxmox-dev # change me
+  namespace: proxmoxdev # change me
 spec:
   headers:
     browserXssFilter: true
