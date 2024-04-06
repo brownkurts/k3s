@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: grafana
+  name: monitor-stack
 ---
 apiVersion: apps/v1
 kind: Deployment
