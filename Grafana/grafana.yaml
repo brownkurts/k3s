@@ -11,6 +11,8 @@ metadata:
   name: grafana
   namespace: grafana
 spec:
+  nodeSelector:
+    worker: "true"
   selector:
     matchLabels:
       app: grafana
