@@ -2,7 +2,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: grafana-claim
-  namespace: grafana-server
+  namespace: grafana
 spec:
   storageClassName: longhorn
   accessModes:
