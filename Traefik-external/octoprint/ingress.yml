@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: octoprint # change me
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: octoprint # change me
+  namespace: octoprint # change me
+spec:
+  type: ExternalName
+  ports:
+    - name: https # change me
+      port: 5000 # change me
+      targetPort: 5000 # change me
+  externalName: 192.168.2.30 # change me
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: octoprint # change me
+  namespace: octoprint # change me
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`www.octoprint.kbtech.org`) # change me
+      kind: Rule
+      services:
+        - name: octoprint # change me
+          port: 5000 # change me
+    - match: Host(`octoprint.kbtech.org`) # change me
+      kind: Rule
+      services:
+        - name: octoprint # change me
+          port: 5000 # change me
+      middlewares:
+        - name: default-headers
+  tls:
+    secretName: kbtech-tls # change me
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: default-headers
+  namespace: octoprint # change me
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
